@@ -9,8 +9,9 @@ from django.http import HttpResponse
 
 # model object - single student data
 
-def student_detail(request,pk):
-    stu=  Student.objects.get(id=pk)
-    serializer = StudentSerializer(stu)
+def student_list(request):
+    stu= Student.objects.all()
+    serializer = StudentSerializer(stu,many=True)
     json_data = JSONRenderer().render(serializer.data)
     return HttpResponse(json_data,content_type='application/json')
+
