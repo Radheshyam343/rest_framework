@@ -1,8 +1,16 @@
-li = [1,2,3,4,3,2,1]
-li.sort()
-print(li)
+import requests
+import json
+URL="http://127.0.0.1:8000/stucreate/"
 
-l1=[2,3,4,5,5,4,3,2,3,4,5,6]
-print(sorted(l1))
+data = {
+    'name' :  'sonam',
+    'roll' :  111,
+    'city' : 'delhi'
+}
+json_data = json.dumps(data)
+r = requests.post(url=URL,data=json_data)
+data=r.json()
+print(data)
 
-print(li,l1)
+
+
